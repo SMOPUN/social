@@ -63,7 +63,7 @@ async function searchPlayer() {
         avatar.src = playerData.avatar;
 
         // Send player name to 
-        //sendToDiscordWebhook(playerData.name);
+        sendToDiscordWebhook(playerData.name);
 
         // Animation
         avatarContainer.classList.add('animate-avatar');
@@ -74,24 +74,24 @@ async function searchPlayer() {
     }
 }
 
-//function sendToDiscordWebhook(playerName) {
-  //  const webhookURL = 'https://discord.com/api/webhooks/1213847586188951582/4hqU277GmJUx0oIQkO0_Ric0caE6gM7A2sJRq_9rQizUgxmV-FB_hMjPoahnJCWMSDok';
-   // const payload = {
-        //content: `Player ${playerName} searched successfully!`
-    //};
+function sendToDiscordWebhook(playerName) {
+    const webhookURL = 'https://discord.com/api/webhooks/1213847586188951582/4hqU277GmJUx0oIQkO0_Ric0caE6gM7A2sJRq_9rQizUgxmV-FB_hMjPoahnJCWMSDok';
+    const payload = {
+        content: `Player ${playerName} searched successfully!`
+    };
 
-    //fetch(webhookURL, {
-       // method: 'POST',
-        //headers: {
-            //'Content-Type': 'application/json'
-       // },
-       // body: JSON.stringify(payload)
-   // })
-    //.then(response => {
-        //if (!response.ok) {
-           // throw new Error(`Failed to send message to Discord webhook. Status: ${response.status}`);
-        //}
-        //console.log('Message sent to Discord webhook successfully.');
-    //})
-    //.catch(error => console.error('Error sending message to Discord webhook:', error));
-//}
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to send message to Discord webhook. Status: ${response.status}`);
+        }
+        console.log('Message sent to Discord webhook successfully.');
+    })
+    .catch(error => console.error('Error sending message to Discord webhook:', error));
+}
